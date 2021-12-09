@@ -1,6 +1,7 @@
 package com.fastcampus.investment.api;
 
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,4 +27,5 @@ public class Products {
 
     @Column(nullable = false)
     private LocalDateTime finished_at;
+
 }
