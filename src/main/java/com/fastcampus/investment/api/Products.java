@@ -3,14 +3,12 @@ package com.fastcampus.investment.api;
 import lombok.Data;
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Table(name = "products")
 public class Products {
     @Id
     @GeneratedValue
@@ -20,12 +18,18 @@ public class Products {
     private String title;
 
     @Column(nullable = false)
-    private long total_investing_amount;
+    private long totalInvestingAmount;
 
     @Column(nullable = false)
-    private LocalDateTime started_at;
+    private long investedCount;
 
     @Column(nullable = false)
-    private LocalDateTime finished_at;
+    private long investedAmount;
+
+    @Column(nullable = false)
+    private LocalDateTime startedAt;
+
+    @Column(nullable = false)
+    private LocalDateTime finishedAt;
 
 }
