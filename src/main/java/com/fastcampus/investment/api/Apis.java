@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +20,18 @@ public class Apis {
 
     @GetMapping("/product")
     public List<Products> retrieveAllProducts() {
-        return productsRepository.findAll();
+        LocalDateTime now = LocalDateTime.now();
+//        System.out.println(now);
+        List<Products> products = new ArrayList<>();
+
+        for(Products pro : productsRepository.findAll()) {
+//            System.out.println(pro);
+            if(pro.getStarted_at().isBefore(now) && pro.getFinished_at().isAfter(now)) {
+                products.add(pro);
+            }
+        }
+
+        return products;
     }
 
     @GetMapping("/product/{id}")
