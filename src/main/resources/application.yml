@@ -19,5 +19,9 @@ spring:
   sql:
     init:
       platform: h2
+  jpa:
+    hibernate:
+      ddl-auto: none
+    generate-ddl: true
 server:
   port: 8080
