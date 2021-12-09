@@ -20,8 +20,13 @@ spring:
     init:
       platform: h2
   jpa:
+    show-sql: true
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        format_sql: true
     hibernate:
       ddl-auto: none
-    generate-ddl: true
 server:
   port: 8080
