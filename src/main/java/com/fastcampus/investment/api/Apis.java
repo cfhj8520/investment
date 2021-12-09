@@ -14,16 +14,16 @@ import java.util.Optional;
 public class Apis {
 
     @Autowired
-    private ApiRepository apiRepository;
+    private ProductsRepository productsRepository;
 
     @GetMapping("/product")
     public List<Products> retrieveAllProducts() {
-        return apiRepository.findAll();
+        return productsRepository.findAll();
     }
 
     @GetMapping("/product/{id}")
     public Products retrieveProduct(@PathVariable long id) {
-        Optional<Products> products = apiRepository.findById(id);
+        Optional<Products> products = productsRepository.findById(id);
 
         if(!products.isPresent()) {
             return null;
